@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src='nprogress.js'></script>
+    <link rel='stylesheet' href='nprogress.css'/>
+    <link rel='stylesheet' href='CSVChart.css' />
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="CSVChart.js"></script>
+    <title></title>
+	<meta charset="utf-8" />
+
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+</head>
+<body style="background-color: azure">
+    <div class="container">
+        <div id="wumbo" class="jumbotron" style="background-color: #40bf80; color: white; margin-top: 10px; font-family: 'Varela Round', sans-serif;">
+            <h1>CSV Table Creator</h1>
+            <p>
+                Poof! It's like magic!
+            </p>
+        </div>
+    </div>
+    <input type="file" name="file" id="file" class="inputfile" />
+    <label for="file" style="font-family: 'Varela Round', sans-serif; padding: 1em; margin-right: 6em;"><span class="glyphicon glyphicon-file"></span> Choose a file...</label>
+    <script>
+        $('input[type=file]').change(function (e) {
+            $in = $(this);
+            $in.next().html($in.val().split('\\').pop());
+        });
+    </script>
+    <label style="color: white; background-color: steelblue; font-family: 'Varela Round', sans-serif; padding: 1em; font-size: 1.25em;font-weight: 700;">Headers</label>
+    <select id="headers" style="font-family: 'Varela Round', sans-serif; padding: 1em; margin-right: 6em;">
+        <option value='on'>On</option>
+        <option value='off'>Off</option>
+    </select>
+    <label style="color: white; background-color: steelblue; font-family: 'Varela Round', sans-serif; padding: 1em; font-size: 1.25em;font-weight: 700;">Seperator</label>
+    <select id="seperators" style="font-family: 'Varela Round', sans-serif; padding: 1em;">
+        <option value=','>Comma</option>
+        <option value='\t'>Tab</option>
+    </select>
+    <button id="button" type="button" class="btn btn-primary btn-block btn-lg" onclick="getContent()" style="margin-bottom:20px; margin-top:20px; font-family: 'Varela Round', sans-serif;">Print CSV Table</button>
+    <table id="csvTable" class="display" style="width: 100%"></table>
+    <div id="curve_chart" style="width: 100%; height: 850px"></div>
+</body>
+</html>
